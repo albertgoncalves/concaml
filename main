@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -eu
+
+cd "$WD/build"
+cp "$WD/src/main.ml" ./
+ocamlfind \
+    ocamlopt \
+    -noassert \
+    -unsafe \
+    -inline 100 \
+    -nodynlink \
+    -p \
+    -w +1..66 \
+    -thread \
+    -package Lwt,Lwt.unix \
+    -linkpkg main.ml \
+    -o "$WD/bin/concaml"
+
+cd "$WD"
+./bin/concaml
