@@ -5,12 +5,7 @@ set -eu
 cd "$WD/build"
 cp "$WD/src/main.ml" ./
 ocamlfind \
-    ocamlopt \
-    -noassert \
-    -unsafe \
-    -inline 100 \
-    -nodynlink \
-    -p \
+    ocamlc \
     -w +1..66 \
     -thread \
     -package Lwt,Lwt.unix \
