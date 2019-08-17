@@ -11,7 +11,9 @@ export WD
 WD=$(pwd)
 
 for f in build bin; do
-    mkdir "$WD/$f"
+    if [ ! -d "$WD/$f" ]; then
+        mkdir "$WD/$f"
+    fi
 done
 
 indent () {
