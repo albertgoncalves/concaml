@@ -4,11 +4,17 @@
  *  https://github.com/pusher/websockets-from-scratch-tutorial
  *)
 
-let stdin (() : unit) : string Lwt.t = Lwt_io.read_line Lwt_io.stdin
+let stdin ((): unit) : string Lwt.t =
+    let x : string Lwt.t = Lwt_io.read_line Lwt_io.stdin in
+    Printf.printf "> %!"; (* printed *after* the call to `read_line` *)
+    x
 
-let pending : unit Lwt.t =
+let pending (() : unit) : unit Lwt.t =
     Lwt.bind (stdin ()) (fun a ->
         Lwt.bind (stdin ()) (fun b ->
-            Lwt_io.printf "%s\n" (a ^ b)))
+            Lwt_io.printf ": %s, %s\n" a b))
 
-let (_ : 'a) : unit = Lwt_main.run pending
+let (_ : 'a) : unit =
+    while true do
+        pending () |> Lwt_main.run
+    done
