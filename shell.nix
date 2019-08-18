@@ -7,7 +7,6 @@ mkShell {
             ocaml
             ocp-indent
         ])
-        rlwrap
         shellcheck
     ];
     shellHook = ''
