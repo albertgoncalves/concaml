@@ -1,7 +1,7 @@
 (*
  *  https://www.cs.cornell.edu/courses/cs3110/2019sp/textbook/ads/concurrency.html
  *  https://dev.realworldocaml.org/concurrent-programming.html
- *  https://github.com/pusher/websockets-from-scratch-tutorial
+ *  https://caml.inria.fr/pub/docs/oreilly-book/html/book-ora186.html
  *)
 
 let promise (() : unit) : string Lwt.t = Lwt_io.read_line Lwt_io.stdin
